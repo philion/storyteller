@@ -8,12 +8,7 @@ run: $(VENV)/bin/activate
 	$(PYTHON) zmachine games/hhgg.z3
 
 $(VENV)/bin/activate: requirements.txt
-	
-env:
 	python3 -m venv $(VENV)
-	echo "run: source ./$(VENV)/bin/activate"
-	
-requirements:
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 

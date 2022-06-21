@@ -4,6 +4,20 @@ Tinkering with text-to-speech (TTS) and how to get it to sound more like a human
 
 The intention for this code is to act a basis for a series of voice-based art projects demonstrating various ways voice can be incorporated into an interactive art project.
 
+## Building
+
+A [`Makefile`](Makefile) is included for common tasks.
+
+    % make
+
+Should build an VENV (in `/.env`), install the requirements and start running the main entry.
+
+## Status
+
+Current implementation, 0.0.1, uses [vosk](https://github.com/alphacep/vosk-api) and [pyttsx3](https://github.com/nateshmbhat/pyttsx3) 
+
+## Notes
+
 Some the of the specific ideas:
 * A magical storyteller trapped in a mundane object, that can tell a story.
 * Add simple controls of some kind, and a minimal display to select from many stories.
