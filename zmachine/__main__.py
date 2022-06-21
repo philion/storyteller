@@ -1,10 +1,10 @@
 import sys
 from zmachine import zmachine
-from screen import screen
+from voice import voice
 
 def main():
     game = zmachine(sys.argv[1])
-    screen(game)
+    voice(game)
 
 if __name__ == '__main__':
     main()
