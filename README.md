@@ -16,6 +16,13 @@ Should build an VENV (in `/.env`), install the requirements and start running th
 
 Current implementation, 0.0.1, uses [vosk](https://github.com/alphacep/vosk-api) and [pyttsx3](https://github.com/nateshmbhat/pyttsx3) 
 
+Next steps:
+* Logging 
+* TTS that supports SSML
+* Clean up pauses and text buffering
+* Clean up empty ASR responses.
+* Add voice menu for games 
+
 ## Notes
 
 Some the of the specific ideas:

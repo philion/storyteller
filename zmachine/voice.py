@@ -1,11 +1,10 @@
 import io
 import curses
 import textwrap
-import pyttsx3
 
 from utils import sign_uint16
-from microphone import recognizer
-
+from listen import hear
+from flite import speak
 
 class voice():
     def __init__(self, zmachine):
@@ -26,8 +25,8 @@ class voice():
             self.zmachine = zmachine
             self.buffer = io.StringIO()
             self.output_line_count = 0
-            self.engine = pyttsx3.init() # speak!
-            self.voice_in = recognizer() # hear!
+            self.speak = speak() # speak!
+            self.hear = hear() # hear!
 
         def build(self, stdscr):
             height, width = stdscr.getmaxyx()
@@ -98,15 +97,17 @@ class voice():
         def input_handler(self, lowercase = True):
             self.flush_buffer(self.active_window)
             curses.doupdate()
-            #curses.echo()
+            curses.echo()
 
             # Use voice recognition to capture input.
-            result = self.voice_in.get_input()
+            result = self.hear.text()
 
             if lowercase:
                 result = result.lower()
-            #curses.noecho()
-            print(result) # echo
+            
+            print(result, end='') # echo
+
+            curses.noecho()
             self.output_line_count = 0
             return result
 
@@ -131,10 +132,10 @@ class voice():
                     self.output_line_count = 0
             window.noutrefresh()
 
+            window.refresh()
             # This is where TTS happens....
             # FIXME: The text buffer isn't going to screen until this has ended.
-            self.engine.say(text)
-            self.engine.runAndWait()
+            self.speak.text(text)
 
         def wrap_lines(self, text, window):
             result = []
