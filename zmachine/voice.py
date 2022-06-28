@@ -105,9 +105,9 @@ class voice():
             if lowercase:
                 result = result.lower()
             
-            print(result, end='') # echo
+            print(result) # echo
 
-            curses.noecho()
+            #curses.noecho()
             self.output_line_count = 0
             return result
 
