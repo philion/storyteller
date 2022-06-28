@@ -4,6 +4,12 @@ Tinkering with text-to-speech (TTS) and how to get it to sound more like a human
 
 The intention for this code is to act a basis for a series of voice-based art projects demonstrating various ways voice can be incorporated into an interactive art project.
 
+A general problem to consider: A huge volume of information. Hoe do you find what you need?
+
+Smart indexes, including the bookshelf. book and article metadata for small indexes.
+
+Use the gutenberg metadata files directly, as per https://github.com/openzim/gutenberg/blob/master/gutenbergtozim/rdf.py
+
 ## Building
 
 A [`Makefile`](Makefile) is included for common tasks.
@@ -14,14 +20,25 @@ Should build an VENV (in `/.env`), install the requirements and start running th
 
 ## Status
 
-Current implementation, 0.0.1, uses [vosk](https://github.com/alphacep/vosk-api) and [pyttsx3](https://github.com/nateshmbhat/pyttsx3) 
+Current implementation, 0.0.2, uses [vosk](https://github.com/alphacep/vosk-api) and [flite](https://github.com/festvox/flite) 
+
 
 Next steps:
 * Logging 
-* TTS that supports SSML
-* Clean up pauses and text buffering
+* TTS that supports SSML - done - added a wrapper for flite
+* Clean up pauses and text buffering - better w/ flite.
 * Clean up empty ASR responses.
 * Add voice menu for games 
+
+Started testing on Raspberry PI. flite and zmachine are working, breaks without mic.
+
+## Building
+
+On raspi, need:
+
+	sudo apt install flite python3-pyaudio python3-soundfile
+	pip install -r requirements.txt
+    pip install https://github.com/alphacep/vosk-api/releases/download/v0.3.42/vosk-0.3.42-py3-none-linux_aarch64.whl
 
 ## Notes
 
